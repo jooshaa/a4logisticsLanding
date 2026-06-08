@@ -42,15 +42,15 @@ const SCRIPTS: Msg[][] = [
     },
     {
       id: 'g2', from: 'bot', type: 'action', delay: 600,
-      text: '📋 Barcha logistika guruhlari (1000)\n📍 Faqat Toshkent yo\'nalishlari\n📍 Faqat Andijon yo\'nalishlari',
+      text: '📋 Barcha logistika guruhlari (1000+)\n📍 Faqat Toshkent yo\'nalishlari\n📍 Faqat Andijon yo\'nalishlari',
     },
     {
       id: 'gu1', from: 'user', type: 'text', delay: 1900,
-      text: '📋 Barcha logistika guruhlari (1000)',
+      text: '📋 Barcha logistika guruhlari (1000+)',
     },
     {
       id: 'gb1', from: 'bot', type: 'text', delay: 2800,
-      text: '✅ 1000 ta guruh tanlandi!\n\n👥 4 ta akkaunt orqali\nHar biri ≈ 250 ta guruh',
+      text: '✅ 1000+ ta guruh tanlandi!\n\n👥 4 ta akkaunt orqali\nHar biri ≈ 250 ta guruh',
     },
   ],
 
@@ -70,11 +70,11 @@ const SCRIPTS: Msg[][] = [
     },
     {
       id: 'sb1', from: 'bot', type: 'text', delay: 2800,
-      text: '🚀 Tarqatish boshlandi!\n\n📊 Yuborilmoqda... 47/1000\n⏳ Taxminiy: ~55 daqiqa',
+      text: '🚀 Tarqatish boshlandi!\n\n📊 Yuborilmoqda... 47/1000+\n⏳ Taxminiy: ~55 daqiqa',
     },
     {
       id: 'sb2', from: 'bot', type: 'text', delay: 4000,
-      text: '✅ 1000 ta guruhga muvaffaqiyatli yuborildi!\n\n🔄 Keyingi yuborish: 1 soatdan so\'ng',
+      text: '✅ 1000+ ta guruhga muvaffaqiyatli yuborildi!\n\n🔄 Keyingi yuborish: 1 soatdan so\'ng',
     },
   ],
 ];

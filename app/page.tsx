@@ -121,7 +121,7 @@ export default function Home() {
       return (
         <div className="flex flex-col items-center justify-center h-full gap-4">
           <div className="text-[40px] md:text-[56px] font-medium text-white text-center tabular-nums">
-            {totalSent.toLocaleString()} <span className="text-white/30 text-[28px] md:text-[36px]">/ 1,000</span>
+            {totalSent.toLocaleString()} <span className="text-white/30 text-[28px] md:text-[36px]">/ 1,000+</span>
           </div>
           <div className="text-center text-[#8A8F98] text-[12px]">Muvaffaqiyatli yuborilganlar</div>
           <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden mt-2">
@@ -211,7 +211,7 @@ export default function Home() {
                   <div className="text-[10px] font-semibold text-[#8A8F98] mb-2 uppercase tracking-wider">Holat</div>
                   <div className="space-y-1.5 text-[11px] text-[#8A8F98]">
                     <div className="flex justify-between"><span>Akkauntlar</span><span className="text-white">4/4 Faol</span></div>
-                    <div className="flex justify-between"><span>Guruhlar</span><span className="text-white">1,000 ta</span></div>
+                    <div className="flex justify-between"><span>Guruhlar</span><span className="text-white">1,000+ ta</span></div>
                     <div className="flex justify-between"><span>Interval</span><span className="text-white">Har 1 soat</span></div>
                   </div>
                 </div>
