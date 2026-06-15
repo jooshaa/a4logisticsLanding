@@ -345,24 +345,14 @@ export default function Home() {
                         <p className="text-[13px] sm:text-[14px] text-[#555]">{plan.period}</p>
                       </div>
                     </div>
-
-                    {/* CTA */}
-                    <a
-                      href="https://t.me/a4logistics_bot"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-3.5 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors text-center block shadow-lg"
-                    >
-                      {plan.cta}
-                    </a>
                   </div>
 
                   {/* Divider */}
                   <div className="h-px bg-white/[0.06]" />
 
-                  {/* Features */}
-                  <div className="px-8 py-6">
-                    <ul className="space-y-4">
+                  {/* Features & CTA */}
+                  <div className="px-6 sm:px-8 py-6 sm:py-8 flex flex-col h-full">
+                    <ul className="space-y-4 mb-8 flex-grow">
                       {plan.features.map((item, j) => (
                         <li key={j} className="flex items-center gap-3 text-[14px] text-white/70">
                           <svg className="w-4 h-4 flex-shrink-0 text-white/50" viewBox="0 0 16 16" fill="none">
@@ -372,6 +362,16 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+
+                    {/* CTA */}
+                    <a
+                      href="https://t.me/a4logistics_bot"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full mt-auto py-3.5 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors text-center block shadow-lg"
+                    >
+                      {plan.cta}
+                    </a>
                   </div>
                 </div>
               </>
