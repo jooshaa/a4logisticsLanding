@@ -254,14 +254,14 @@ export default function Home() {
               Botdan foydalanish uchun o'zingizga qulay bo'lgan muddatni tanlang. To'lovlar Click yoki Payme orqali qabul qilinadi.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-stretch justify-center max-w-[1000px] mx-auto gap-4 sm:gap-0">
+          <div className="flex flex-col sm:flex-row items-stretch justify-center max-w-[1000px] mx-auto gap-8 sm:gap-0 mt-8 sm:mt-0 pt-4 sm:pt-0">
             {[
               { days: "30 kunlik", desc: "Boshlang'ich tanlov", price: "$10", suffix: "/month", featured: false },
               { days: "60 kunlik", desc: "Foydali ta'rif", price: "$18", suffix: "/month", featured: true },
               { days: "90 kunlik", desc: "Uzoq muddatli qulaylik", price: "$25", suffix: "/month", featured: false }
             ].map((plan, i) => (
-              <div key={i} className={`relative rounded-3xl border transition-all duration-300 w-full sm:w-1/3 ${plan.featured ? 'border-white/30 bg-[#151515] py-10 sm:py-12 px-6 sm:px-8 z-10 shadow-2xl shadow-white/5 sm:-mx-2 my-0' : 'border-white/10 bg-[#0A0A0A] py-8 px-6 hover:border-white/20'}`}>
-                {plan.featured && <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg">Eng mashhur</div>}
+              <div key={i} className={`relative rounded-3xl border transition-all duration-300 w-full sm:w-1/3 ${plan.featured ? 'border-white/30 bg-[#151515] py-10 sm:py-12 px-6 sm:px-8 z-10 shadow-2xl shadow-white/5 sm:-mx-2 sm:my-0' : 'border-white/10 bg-[#0A0A0A] py-8 px-6 hover:border-white/20'}`}>
+                {plan.featured && <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg whitespace-nowrap">Eng mashhur</div>}
                 <div className="flex flex-col h-full">
                   <h3 className="text-[18px] sm:text-[20px] text-white font-medium mb-1">{plan.days}</h3>
                   <div className="text-[13px] text-[#8A8F98] mb-5">{plan.desc}</div>
