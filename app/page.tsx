@@ -325,17 +325,26 @@ export default function Home() {
 
                 {/* Single plan card */}
                 <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0A] overflow-hidden">
-                  <div className="px-8 pt-8 pb-7">
-                    {/* Icon + name */}
-                    <div className="text-white mb-5">{plan.icon}</div>
-                    <h3 className="text-[28px] font-medium tracking-tight text-white mb-1">{plan.name}</h3>
-                    <p className="text-[15px] text-[#8A8F98] mb-8">{plan.subtitle}</p>
+                  <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 sm:pb-7">
+                    
+                    <div className="flex items-start justify-between mb-8">
+                      {/* Left: Icon, Name, Subtitle */}
+                      <div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="text-white">{plan.icon}</div>
+                          <h3 className="text-[28px] sm:text-[32px] font-medium tracking-tight text-white leading-none">{plan.name}</h3>
+                        </div>
+                        <p className="text-[14px] sm:text-[15px] text-[#8A8F98]">{plan.subtitle}</p>
+                      </div>
 
-                    {/* Price */}
-                    <div className="mb-1">
-                      <span className="text-[64px] font-semibold text-white tracking-tight leading-none">{plan.price}</span>
+                      {/* Right: Price, Period */}
+                      <div className="text-right">
+                        <div className="text-[40px] sm:text-[48px] font-semibold text-white tracking-tight leading-none mb-2">
+                          {plan.price}
+                        </div>
+                        <p className="text-[13px] sm:text-[14px] text-[#555]">{plan.period}</p>
+                      </div>
                     </div>
-                    <p className="text-[14px] text-[#555] mb-8">{plan.period}</p>
 
                     {/* CTA */}
                     <a
