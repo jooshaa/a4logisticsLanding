@@ -148,9 +148,9 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white selection:bg-white/20 font-sans">
 
       {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="relative pt-24 pb-16 overflow-hidden bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),transparent_60%)]">
+      <section className="relative pt-10 pb-16 overflow-hidden bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.08),transparent_60%)]">
         <div className="absolute bottom-0 left-0 right-0 h-[600px] bg-gradient-to-t from-[#0a0a0a] via-[#050505]/80 to-transparent pointer-events-none" />
-        <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 md:pt-20 animate-fade-in text-center md:text-left">
+        <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 pt-4 md:pt-8 animate-fade-in text-center md:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-[12px] font-medium text-[#8A8F98] mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             Hozir 1,000+ guruh bilan ishlayapti
@@ -179,120 +179,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Dashboard demo */}
-        <div className="relative w-full max-w-[1200px] mx-auto px-4 sm:px-6 mt-14 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <div className="w-full border border-white/10 rounded-2xl bg-[#0A0A0A] overflow-hidden flex flex-col md:flex-row shadow-2xl" style={{ minHeight: 420 }}>
-
-            {/* Left sidebar */}
-            <div className="w-full md:w-[220px] border-b md:border-b-0 md:border-r border-white/10 bg-[#0A0A0A] flex flex-col">
-              <div className="h-12 flex items-center justify-between px-4 border-b border-white/10 flex-shrink-0">
-                <div className="flex items-center gap-2 text-white">
-                  <div className="w-5 h-5 rounded-md bg-white flex items-center justify-center text-black text-[10px] font-bold">A4</div>
-                  <span className="text-[13px] font-medium">a4logistics bot</span>
-                </div>
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                </div>
-              </div>
-              <div className="flex-1 p-3 overflow-hidden">
-                <div className="text-[10px] font-semibold text-[#8A8F98] mb-2 uppercase tracking-wider">Jarayon</div>
-                <div className="space-y-0.5">
-                  {phases.map((p, i) => (
-                    <div key={i} className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-[12px] transition-all duration-300 ${i === currentPhase ? 'bg-white/[0.06] text-white' : i < currentPhase ? 'text-white/40' : 'text-[#555]'}`}>
-                      <div className={`w-3.5 h-3.5 rounded-full border flex-shrink-0 flex items-center justify-center ${i === currentPhase ? 'border-white/40' : i < currentPhase ? 'border-white/20 bg-white/10' : 'border-white/10'}`}>
-                        {i < currentPhase && <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />}
-                        {i === currentPhase && <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />}
-                      </div>
-                      <span className="leading-tight">{p.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-4 pt-4 border-t border-white/[0.06]">
-                  <div className="text-[10px] font-semibold text-[#8A8F98] mb-2 uppercase tracking-wider">Holat</div>
-                  <div className="space-y-1.5 text-[11px] text-[#8A8F98]">
-                    <div className="flex justify-between"><span>Akkauntlar</span><span className="text-white">4/4 Faol</span></div>
-                    <div className="flex justify-between"><span>Guruhlar</span><span className="text-white">1,000+ ta</span></div>
-                    <div className="flex justify-between"><span>Interval</span><span className="text-white">Har 1 soat</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Center main area */}
-            <div className="flex-1 flex flex-col bg-[#0A0A0A] min-w-0">
-              <div className="h-12 border-b border-white/10 flex items-center justify-between px-4 flex-shrink-0">
-                <span className="text-[13px] font-medium text-white">Avto Yuborma Jarayoni</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-[11px] text-green-400 font-medium">Ishlamoqda</span>
-                </div>
-              </div>
-              <div className="flex-1 p-4 sm:p-6 flex flex-col overflow-hidden">
-                <div className="text-[12px] text-[#8A8F98] mb-4 font-medium">{getActionText()}</div>
-                <div className="flex-1">
-                  {renderMainDisplay()}
-                </div>
-              </div>
-            </div>
-
-            {/* Right stats — hidden on small, visible on lg */}
-            <div className="hidden lg:flex w-[240px] border-l border-white/10 bg-[#0A0A0A] flex-col flex-shrink-0">
-              <div className="h-12 border-b border-white/10 flex items-center px-4 flex-shrink-0">
-                <span className="text-[13px] font-medium text-white">Statistika</span>
-              </div>
-              <div className="p-4 flex-1 overflow-hidden">
-                <AnimatedStats progress={progress} totalSent={totalSent} />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURES ─────────────────────────────────────────────────────── */}
-      <section className="py-24 sm:py-32 relative bg-black border-t border-white/5">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-          <div className="mb-12 sm:mb-16">
-            <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-medium text-white mb-4 tracking-tight">
-              Sizning biznesingiz uchun <br className="hidden sm:block" />maxsus yechimlar
-            </h2>
-            <p className="text-[16px] sm:text-[17px] text-[#8A8F98] max-w-[500px] leading-relaxed">
-              Botning imkoniyatlari logistika dispetcherlarining vaqtini tejashga qaratilgan.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              { icon: Smartphone, title: "Ko'p Akkauntli Tizim", desc: "Birdaniga 4 tagacha shaxsiy Telegram raqamni ulash imkoniyati. Bu guruhlarga yuborish tezligini oshiradi va har bir akkauntni ortiqcha zo'riqishdan himoya qiladi." },
-              { icon: Shield, title: "Anti-Ban Himoya", desc: "Guruhlar orasida tasodifiy (random 5-15 sek) pauzalar hamda avtomatik FloodWait aylanib o'tish mexanizmi Telegram limitlariga tushib qolmasligingizni ta'minlaydi." },
-              { icon: Zap, title: "Keng Qamrov", desc: "O'zbekiston bo'ylab 1,000+ ta eng faol ommaviy logistika guruhlari bazasi bilan kuniga ~3,000 xabar yuborish imkoniyati sizning mijozlar oqimingizni ko'paytiradi." }
-            ].map((f, idx) => (
-              <div key={idx} className="group border border-white/[0.08] rounded-2xl bg-[#0A0A0A] p-6 sm:p-8 transition-all duration-500 hover:border-white/20 hover:bg-[#111111]">
-                <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center mb-5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                  <f.icon className="w-5 h-5 text-white/80" />
-                </div>
-                <h3 className="text-[18px] sm:text-[20px] font-medium text-white mb-3">{f.title}</h3>
-                <p className="text-[14px] text-[#8A8F98] leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS ────────────────────────────────────────────────── */}
-      <section id="how" className="py-24 sm:py-32 relative bg-black border-t border-white/5">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-          <div className="mb-16 sm:mb-20 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-[12px] sm:text-[13px] font-medium text-[#8A8F98] mb-6">
-              Qanday ishlaydi
-            </div>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-white leading-[1.1]">
-              Hammasi judayam oddiy,<br /> atigi 3 ta qadam.
-            </h2>
-          </div>
-
-          {/* Steps + phone side-by-side on large, stacked on mobile */}
+        {/* Steps + phone demo (Moved to replace Dashboard) */}
+        <div id="how" className="relative w-full max-w-[1200px] mx-auto px-4 sm:px-6 mt-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start">
-
+            
             {/* Steps list */}
             <div className="flex-1 space-y-3 w-full">
               {steps.map((s, i) => (
@@ -329,6 +219,37 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── FEATURES ─────────────────────────────────────────────────────── */}
+      <section className="py-24 sm:py-32 relative bg-black border-t border-white/5">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-medium text-white mb-4 tracking-tight">
+              Sizning biznesingiz uchun <br className="hidden sm:block" />maxsus yechimlar
+            </h2>
+            <p className="text-[16px] sm:text-[17px] text-[#8A8F98] max-w-[500px] leading-relaxed">
+              Botning imkoniyatlari logistika dispetcherlarining vaqtini tejashga qaratilgan.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              { icon: Smartphone, title: "Ko'p Akkauntli Tizim", desc: "Birdaniga 4 tagacha shaxsiy Telegram raqamni ulash imkoniyati. Bu guruhlarga yuborish tezligini oshiradi va har bir akkauntni ortiqcha zo'riqishdan himoya qiladi." },
+              { icon: Shield, title: "Anti-Ban Himoya", desc: "Guruhlar orasida tasodifiy (random 5-15 sek) pauzalar hamda avtomatik FloodWait aylanib o'tish mexanizmi Telegram limitlariga tushib qolmasligingizni ta'minlaydi." },
+              { icon: Zap, title: "Keng Qamrov", desc: "O'zbekiston bo'ylab 1,000+ ta eng faol ommaviy logistika guruhlari bazasi bilan kuniga ~3,000 xabar yuborish imkoniyati sizning mijozlar oqimingizni ko'paytiradi." }
+            ].map((f, idx) => (
+              <div key={idx} className="group border border-white/[0.08] rounded-2xl bg-[#0A0A0A] p-6 sm:p-8 transition-all duration-500 hover:border-white/20 hover:bg-[#111111]">
+                <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center mb-5 border border-white/10 group-hover:bg-white/10 transition-colors">
+                  <f.icon className="w-5 h-5 text-white/80" />
+                </div>
+                <h3 className="text-[18px] sm:text-[20px] font-medium text-white mb-3">{f.title}</h3>
+                <p className="text-[14px] text-[#8A8F98] leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* ── PRICING ──────────────────────────────────────────────────────── */}
       <section className="py-24 sm:py-32 relative bg-black border-t border-white/5">
