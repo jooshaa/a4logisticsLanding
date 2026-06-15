@@ -11,8 +11,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Logit Smartbot — Avtomatik reklama",
+  title: "a4logistics — Avtomatik reklama boti",
   description: "Logistika dispetcherlari uchun avtomatik reklama tarqatish boti",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚛</text></svg>",
+  },
 };
 
 export default function RootLayout({
