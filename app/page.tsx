@@ -310,8 +310,8 @@ export default function Home() {
             <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity cursor-default">
               <span className="text-[11px] text-[#8A8F98] uppercase tracking-widest">Powered by</span>
               <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
-                <img src="/etamin-logo.png" alt="etamin logo" className="h-4 w-auto object-contain" />
-                <span className="text-[13px] font-semibold tracking-wide text-white">etamin</span>
+                <img src="/etamin-logo.png" alt="ETAMIN logo" className="h-4 w-auto object-contain" />
+                <span className="text-[13px] font-semibold tracking-wide text-white">ETAMIN</span>
               </div>
             </div>
           </div>
