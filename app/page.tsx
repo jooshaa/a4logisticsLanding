@@ -189,7 +189,7 @@ export default function Home() {
                 <button
                   key={i}
                   onClick={() => triggerStepChange(i)}
-                  className={`w-full text-left p-5 sm:p-7 rounded-2xl border transition-all duration-300 ${activeStep === i ? 'border-white/20 bg-[#111111]' : 'border-white/[0.06] bg-transparent hover:border-white/10 hover:bg-white/[0.02]'}`}
+                  className={`w-full text-left p-5 sm:p-7 rounded-2xl border transition-all duration-300 ${activeStep === i ? 'border-white/20 bg-[#111111] block' : 'border-white/[0.06] bg-transparent hover:border-white/10 hover:bg-white/[0.02] hidden lg:block'}`}
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <span className={`text-[11px] font-semibold tracking-[0.12em] uppercase transition-colors ${activeStep === i ? 'text-white/50' : 'text-[#444]'}`}>Qadam {s.id}</span>
