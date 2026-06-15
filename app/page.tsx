@@ -255,71 +255,107 @@ export default function Home() {
             </p>
           </div>
 
-          {/* All plans — visible on all screen sizes */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-stretch">
             {[
-              { days: "30 kunlik", desc: "Boshlang'ich", price: "$10", sub: "oyiga", featured: false },
-              { days: "60 kunlik", desc: "Eng mashhur",  price: "$18", sub: "oyiga", featured: true  },
-              { days: "90 kunlik", desc: "Tejamkor",     price: "$25", sub: "oyiga", featured: false }
+              {
+                name: "Starter",
+                subtitle: "Botni sinab ko'ring",
+                price: "$10",
+                period: "30 kun uchun",
+                featured: false,
+                cta: "Boshlash",
+                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="12" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <path d="M24 16h4l4 6v6h-8V16z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+                    <circle cx="9" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <circle cx="27" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                  </svg>
+                )
+              },
+              {
+                name: "Pro",
+                subtitle: "Eng mashhur tanlov",
+                price: "$18",
+                period: "60 kun uchun",
+                featured: true,
+                cta: "Pro ni tanlash",
+                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 4L22 14H32L24 20L27 30L18 24L9 30L12 20L4 14H14L18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+                  </svg>
+                )
+              },
+              {
+                name: "Max",
+                subtitle: "Uzoq muddatli qulaylik",
+                price: "$25",
+                period: "90 kun uchun",
+                featured: false,
+                cta: "Max ni tanlash",
+                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 4C18 4 8 10 8 20C8 25.5 12.5 30 18 30C23.5 30 28 25.5 28 20C28 10 18 4 18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <path d="M18 14V20L22 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                )
+              }
             ].map((plan, i) => (
               <div
                 key={i}
                 className={`relative flex flex-col w-full sm:w-1/3 rounded-2xl border transition-all duration-300
                   ${plan.featured
-                    ? 'border-white/25 bg-[#141414] sm:-mx-1 shadow-2xl shadow-black/60 z-10'
-                    : 'border-white/[0.08] bg-[#0A0A0A] hover:border-white/15'
+                    ? 'border-white/20 bg-[#141414] sm:-mx-1 shadow-2xl shadow-black/60 z-10'
+                    : 'border-white/[0.08] bg-[#0C0C0C] hover:border-white/15'
                   }`}
               >
-                {/* Card top */}
-                <div className={`px-6 pt-6 pb-5 ${plan.featured ? 'sm:pt-8' : ''}`}>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[13px] font-medium text-[#8A8F98]">{plan.days}</span>
-                    {plan.featured && (
-                      <span className="inline-flex items-center gap-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">
-                        <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
-                        {plan.desc}
-                      </span>
-                    )}
-                    {!plan.featured && (
-                      <span className="text-[12px] text-[#555]">{plan.desc}</span>
-                    )}
+                <div className={`px-6 pt-7 pb-6 flex flex-col flex-1`}>
+                  {/* Icon */}
+                  <div className={`mb-5 ${plan.featured ? 'text-white' : 'text-white/40'}`}>
+                    {plan.icon}
                   </div>
 
-                  {/* Price */}
-                  <div className="flex items-end gap-2 mb-1">
-                    <span className={`font-semibold tracking-tight text-white leading-none ${plan.featured ? 'text-[56px] sm:text-[64px]' : 'text-[48px]'}`}>
-                      {plan.price}
-                    </span>
-                    <span className="text-[13px] text-[#555] mb-2">{plan.sub}</span>
+                  {/* Plan name */}
+                  <div className="mb-1">
+                    <h3 className={`font-semibold tracking-tight leading-none ${plan.featured ? 'text-[42px] sm:text-[48px] text-white' : 'text-[36px] sm:text-[42px] text-white/80'}`}>
+                      {plan.name}
+                    </h3>
                   </div>
-                  <div className="h-px bg-white/[0.06] mb-5" />
+                  <p className="text-[14px] text-[#8A8F98] mb-5">{plan.subtitle}</p>
+
+                  {/* Price */}
+                  <div className="mb-1">
+                    <span className={`font-semibold tracking-tight text-white ${plan.featured ? 'text-[40px]' : 'text-[34px]'}`}>{plan.price}</span>
+                  </div>
+                  <p className="text-[13px] text-[#555] mb-6">{plan.period}</p>
 
                   {/* CTA */}
                   <a
                     href="https://t.me/a4logistics_bot"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-xl text-[14px] font-semibold transition-all duration-200 text-center block
+                    className={`w-full py-3 rounded-xl text-[14px] font-semibold transition-all duration-200 text-center block mb-6
                       ${plan.featured
                         ? 'bg-white text-black hover:bg-white/90 shadow-lg'
-                        : 'bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:text-white'
+                        : 'bg-white/[0.06] border border-white/10 text-white/80 hover:bg-white/10 hover:text-white'
                       }`}
                   >
-                    Ulanish
+                    {plan.cta}
                   </a>
-                </div>
 
-                {/* Features */}
-                <div className="px-6 pb-6">
-                  <ul className="grid grid-cols-1 gap-2.5">
-                    {[
-                      "Cheksiz arizalar",
-                      "4 ta akkunt",
-                      "1,000+ guruh",
-                      "Anti-ban himoya"
-                    ].map((item, j) => (
-                      <li key={j} className="flex items-center gap-2.5 text-[13px] text-white/60">
-                        <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${plan.featured ? 'text-white/60' : 'text-white/25'}`} />
+                  {/* Divider */}
+                  <div className="h-px bg-white/[0.06] mb-5" />
+
+                  {/* Features */}
+                  <ul className="space-y-3 flex-1">
+                    {plan.features.map((item, j) => (
+                      <li key={j} className="flex items-start gap-3 text-[13px] text-white/60">
+                        <svg className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-white/70' : 'text-white/30'}`} viewBox="0 0 16 16" fill="none">
+                          <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                         {item}
                       </li>
                     ))}
@@ -330,6 +366,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* ── FOOTER ───────────────────────────────────────────────────────── */}
       <footer className="py-10 sm:py-12 border-t border-white/5 bg-black">
