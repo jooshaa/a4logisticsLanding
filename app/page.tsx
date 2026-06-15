@@ -352,9 +352,22 @@ export default function Home() {
                   <div className="h-px bg-white/[0.06]" />
 
                   {/* Features */}
-              </div>
-            ))}
-          </div>
+                  <div className="px-8 py-6">
+                    <ul className="space-y-4">
+                      {plan.features.map((item, j) => (
+                        <li key={j} className="flex items-center gap-3 text-[14px] text-white/70">
+                          <svg className="w-4 h-4 flex-shrink-0 text-white/50" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </div>
       </section>
 
