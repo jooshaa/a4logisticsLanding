@@ -38,6 +38,7 @@ export default function Home() {
   const [totalSent, setTotalSent] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [imgFading, setImgFading] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(1); // default: Pro
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -243,30 +244,28 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* ── PRICING ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-32 relative bg-black border-t border-white/5">
-        <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 sm:mb-14">
+        <div className="max-w-[520px] mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-[28px] sm:text-[40px] font-medium text-white mb-3 tracking-tight">Obuna Ta'riflari</h2>
-            <p className="text-[14px] sm:text-[16px] text-[#8A8F98] max-w-[420px] mx-auto leading-relaxed">
+            <p className="text-[14px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
               To'lovlar Click yoki Payme orqali qabul qilinadi.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-stretch">
-            {[
+          {/* ── Tab switcher ── */}
+          {(() => {
+            const plans = [
               {
                 name: "Starter",
                 subtitle: "Botni sinab ko'ring",
                 price: "$10",
                 period: "30 kun uchun",
-                featured: false,
                 cta: "Boshlash",
                 features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
                 icon: (
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="4" y="12" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                     <path d="M24 16h4l4 6v6h-8V16z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
                     <circle cx="9" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
@@ -279,11 +278,10 @@ export default function Home() {
                 subtitle: "Eng mashhur tanlov",
                 price: "$18",
                 period: "60 kun uchun",
-                featured: true,
                 cta: "Pro ni tanlash",
                 features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
                 icon: (
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 4L22 14H32L24 20L27 30L18 24L9 30L12 20L4 14H14L18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
                   </svg>
                 )
@@ -293,74 +291,67 @@ export default function Home() {
                 subtitle: "Uzoq muddatli qulaylik",
                 price: "$25",
                 period: "90 kun uchun",
-                featured: false,
                 cta: "Max ni tanlash",
                 features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
                 icon: (
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 4C18 4 8 10 8 20C8 25.5 12.5 30 18 30C23.5 30 28 25.5 28 20C28 10 18 4 18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                     <path d="M18 14V20L22 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 )
               }
-            ].map((plan, i) => (
-              <div
-                key={i}
-                className={`relative flex flex-col w-full sm:w-1/3 rounded-2xl border transition-all duration-300
-                  ${plan.featured
-                    ? 'border-white/20 bg-[#141414] sm:-mx-1 shadow-2xl shadow-black/60 z-10'
-                    : 'border-white/[0.08] bg-[#0C0C0C] hover:border-white/15'
-                  }`}
-              >
-                <div className={`px-6 pt-7 pb-6 flex flex-col flex-1`}>
-                  {/* Icon */}
-                  <div className={`mb-5 ${plan.featured ? 'text-white' : 'text-white/40'}`}>
-                    {plan.icon}
+            ];
+            const plan = plans[selectedPlan];
+            return (
+              <>
+                {/* Pill tabs */}
+                <div className="flex justify-center mb-8">
+                  <div className="inline-flex items-center gap-1 bg-white/[0.05] border border-white/[0.08] rounded-2xl p-1">
+                    {plans.map((p, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setSelectedPlan(i)}
+                        className={`px-5 py-2.5 rounded-xl text-[14px] font-medium transition-all duration-200
+                          ${selectedPlan === i
+                            ? 'bg-[#18181B] text-white shadow-sm border border-white/10'
+                            : 'text-[#8A8F98] hover:text-white border border-transparent'
+                          }`}
+                      >
+                        {p.name}
+                      </button>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Plan name */}
-                  <div className="mb-1">
-                    <h3 className={`font-semibold tracking-tight leading-none ${plan.featured ? 'text-[42px] sm:text-[48px] text-white' : 'text-[36px] sm:text-[42px] text-white/80'}`}>
-                      {plan.name}
-                    </h3>
+                {/* Single plan card */}
+                <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0A] overflow-hidden">
+                  <div className="px-8 pt-8 pb-7">
+                    {/* Icon + name */}
+                    <div className="text-white mb-6">{plan.icon}</div>
+                    <h3 className="text-[48px] font-semibold tracking-tight text-white leading-none mb-2">{plan.name}</h3>
+                    <p className="text-[15px] text-[#8A8F98] mb-8">{plan.subtitle}</p>
+
+                    {/* Price */}
+                    <div className="mb-1 text-[40px] font-semibold text-white tracking-tight">
+                      {plan.price}
+                    </div>
+                    <p className="text-[14px] text-[#555] mb-8">{plan.period}</p>
+
+                    {/* CTA */}
+                    <a
+                      href="https://t.me/a4logistics_bot"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors text-center block shadow-lg"
+                    >
+                      {plan.cta}
+                    </a>
                   </div>
-                  <p className="text-[14px] text-[#8A8F98] mb-5">{plan.subtitle}</p>
-
-                  {/* Price */}
-                  <div className="mb-1">
-                    <span className={`font-semibold tracking-tight text-white ${plan.featured ? 'text-[40px]' : 'text-[34px]'}`}>{plan.price}</span>
-                  </div>
-                  <p className="text-[13px] text-[#555] mb-6">{plan.period}</p>
-
-                  {/* CTA */}
-                  <a
-                    href="https://t.me/a4logistics_bot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-xl text-[14px] font-semibold transition-all duration-200 text-center block mb-6
-                      ${plan.featured
-                        ? 'bg-white text-black hover:bg-white/90 shadow-lg'
-                        : 'bg-white/[0.06] border border-white/10 text-white/80 hover:bg-white/10 hover:text-white'
-                      }`}
-                  >
-                    {plan.cta}
-                  </a>
 
                   {/* Divider */}
-                  <div className="h-px bg-white/[0.06] mb-5" />
+                  <div className="h-px bg-white/[0.06]" />
 
                   {/* Features */}
-                  <ul className="space-y-3 flex-1">
-                    {plan.features.map((item, j) => (
-                      <li key={j} className="flex items-start gap-3 text-[13px] text-white/60">
-                        <svg className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-white/70' : 'text-white/30'}`} viewBox="0 0 16 16" fill="none">
-                          <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             ))}
           </div>
