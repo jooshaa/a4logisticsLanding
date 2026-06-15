@@ -170,12 +170,6 @@ export default function Home() {
             >
               Boshlash — Bepul
             </a>
-            <a
-              href="#how"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white text-[14px] font-medium hover:bg-white/[0.08] transition-colors"
-            >
-              Qanday ishlaydi?
-            </a>
           </div>
         </div>
 
