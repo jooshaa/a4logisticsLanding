@@ -327,13 +327,13 @@ export default function Home() {
                 <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0A] overflow-hidden">
                   <div className="px-8 pt-8 pb-7">
                     {/* Icon + name */}
-                    <div className="text-white mb-6">{plan.icon}</div>
-                    <h3 className="text-[48px] font-semibold tracking-tight text-white leading-none mb-2">{plan.name}</h3>
+                    <div className="text-white mb-5">{plan.icon}</div>
+                    <h3 className="text-[28px] font-medium tracking-tight text-white mb-1">{plan.name}</h3>
                     <p className="text-[15px] text-[#8A8F98] mb-8">{plan.subtitle}</p>
 
                     {/* Price */}
-                    <div className="mb-1 text-[40px] font-semibold text-white tracking-tight">
-                      {plan.price}
+                    <div className="mb-1">
+                      <span className="text-[64px] font-semibold text-white tracking-tight leading-none">{plan.price}</span>
                     </div>
                     <p className="text-[14px] text-[#555] mb-8">{plan.period}</p>
 
