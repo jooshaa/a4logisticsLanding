@@ -246,102 +246,80 @@ export default function Home() {
 
 
       {/* ── PRICING ──────────────────────────────────────────────────────── */}
-      <section className="py-24 sm:py-32 relative bg-black border-t border-white/5">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-12 sm:mb-16 px-4 sm:px-6">
-            <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-medium text-white mb-4 tracking-tight">Obuna Ta'riflari</h2>
-            <p className="text-[15px] sm:text-[17px] text-[#8A8F98] max-w-[500px] mx-auto leading-relaxed">
-              Botdan foydalanish uchun o'zingizga qulay bo'lgan muddatni tanlang. To'lovlar Click yoki Payme orqali qabul qilinadi.
+      <section className="py-20 sm:py-32 relative bg-black border-t border-white/5">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-[28px] sm:text-[40px] font-medium text-white mb-3 tracking-tight">Obuna Ta'riflari</h2>
+            <p className="text-[14px] sm:text-[16px] text-[#8A8F98] max-w-[420px] mx-auto leading-relaxed">
+              To'lovlar Click yoki Payme orqali qabul qilinadi.
             </p>
           </div>
 
-          {/* Mobile: horizontal snap carousel with peek — starts at featured (center) card */}
-          {(() => {
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const carouselRef = useRef<HTMLDivElement>(null);
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            useEffect(() => {
-              const el = carouselRef.current;
-              if (!el) return;
-              // scroll so the center (featured) card is in view
-              const card = el.children[1] as HTMLElement;
-              if (card) {
-                const offset = card.offsetLeft - (el.offsetWidth - card.offsetWidth) / 2;
-                el.scrollLeft = offset;
-              }
-            }, []);
-            return (
-              <div ref={carouselRef} className="sm:hidden overflow-x-auto snap-x snap-mandatory flex gap-4 px-[10vw] pb-6" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                {[
-                  { days: "30 kunlik", desc: "Boshlang'ich tanlov", price: "$10", suffix: "/month", featured: false },
-                  { days: "60 kunlik", desc: "Foydali ta'rif", price: "$18", suffix: "/month", featured: true },
-                  { days: "90 kunlik", desc: "Uzoq muddatli qulaylik", price: "$25", suffix: "/month", featured: false }
-                ].map((plan, i) => (
-                  <div key={i} className={`snap-center flex-shrink-0 w-[80vw] rounded-3xl border transition-all duration-300 ${plan.featured ? 'border-white/30 bg-[#151515] py-8 px-6 shadow-2xl shadow-white/5' : 'border-white/10 bg-[#0A0A0A] py-8 px-6'}`}>
-                    <div className="flex flex-col h-full">
-                      {plan.featured && (
-                        <div className="inline-flex self-start items-center gap-1.5 bg-white/10 border border-white/20 text-white px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase mb-4">
-                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                          Eng mashhur
-                        </div>
-                      )}
-                      <h3 className="text-[18px] text-white font-medium mb-1">{plan.days}</h3>
-                      <div className="text-[13px] text-[#8A8F98] mb-5">{plan.desc}</div>
-                      <div className="flex items-baseline gap-1 mb-6">
-                        <span className="text-[40px] font-medium text-white tracking-tight">{plan.price}</span>
-                        <span className="text-[13px] text-[#8A8F98] font-medium">{plan.suffix}</span>
-                      </div>
-                      <a
-                        href="https://t.me/a4logistics_bot"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`w-full py-3 rounded-xl text-[14px] font-medium transition-colors mb-6 text-center block ${plan.featured ? 'bg-white text-black hover:bg-white/90 shadow-md' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'}`}
-                      >
-                        Ulanish uchun yozing
-                      </a>
-                      <ul className="space-y-3">
-                        {["Cheksiz arizalar yozish", "4 tagacha akkunt qo'shish", "1,000+ guruhga tarqatish", "Anti-ban himoyasi"].map((item, j) => (
-                          <li key={j} className="flex items-center gap-3 text-[13px] text-white/80">
-                            <CheckCircle2 className="w-4 h-4 text-white/40 flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
-
-          {/* Desktop: original 3-column layout */}
-          <div className="hidden sm:flex flex-row items-stretch justify-center max-w-[1000px] mx-auto gap-0 px-6">
+          {/* All plans — visible on all screen sizes */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-stretch">
             {[
-              { days: "30 kunlik", desc: "Boshlang'ich tanlov", price: "$10", suffix: "/month", featured: false },
-              { days: "60 kunlik", desc: "Foydali ta'rif", price: "$18", suffix: "/month", featured: true },
-              { days: "90 kunlik", desc: "Uzoq muddatli qulaylik", price: "$25", suffix: "/month", featured: false }
+              { days: "30 kunlik", desc: "Boshlang'ich", price: "$10", sub: "oyiga", featured: false },
+              { days: "60 kunlik", desc: "Eng mashhur",  price: "$18", sub: "oyiga", featured: true  },
+              { days: "90 kunlik", desc: "Tejamkor",     price: "$25", sub: "oyiga", featured: false }
             ].map((plan, i) => (
-              <div key={i} className={`relative rounded-3xl border transition-all duration-300 w-1/3 ${plan.featured ? 'border-white/30 bg-[#151515] py-12 px-8 z-10 shadow-2xl shadow-white/5 -mx-2' : 'border-white/10 bg-[#0A0A0A] py-8 px-6 hover:border-white/20'}`}>
-                {plan.featured && <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg whitespace-nowrap">Eng mashhur</div>}
-                <div className="flex flex-col h-full">
-                  <h3 className="text-[20px] text-white font-medium mb-1">{plan.days}</h3>
-                  <div className="text-[13px] text-[#8A8F98] mb-5">{plan.desc}</div>
-                  <div className="flex items-baseline gap-1 mb-6">
-                    <span className="text-[44px] font-medium text-white tracking-tight">{plan.price}</span>
-                    <span className="text-[13px] text-[#8A8F98] font-medium">{plan.suffix}</span>
+              <div
+                key={i}
+                className={`relative flex flex-col w-full sm:w-1/3 rounded-2xl border transition-all duration-300
+                  ${plan.featured
+                    ? 'border-white/25 bg-[#141414] sm:-mx-1 shadow-2xl shadow-black/60 z-10'
+                    : 'border-white/[0.08] bg-[#0A0A0A] hover:border-white/15'
+                  }`}
+              >
+                {/* Card top */}
+                <div className={`px-6 pt-6 pb-5 ${plan.featured ? 'sm:pt-8' : ''}`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[13px] font-medium text-[#8A8F98]">{plan.days}</span>
+                    {plan.featured && (
+                      <span className="inline-flex items-center gap-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+                        {plan.desc}
+                      </span>
+                    )}
+                    {!plan.featured && (
+                      <span className="text-[12px] text-[#555]">{plan.desc}</span>
+                    )}
                   </div>
+
+                  {/* Price */}
+                  <div className="flex items-end gap-2 mb-1">
+                    <span className={`font-semibold tracking-tight text-white leading-none ${plan.featured ? 'text-[56px] sm:text-[64px]' : 'text-[48px]'}`}>
+                      {plan.price}
+                    </span>
+                    <span className="text-[13px] text-[#555] mb-2">{plan.sub}</span>
+                  </div>
+                  <div className="h-px bg-white/[0.06] mb-5" />
+
+                  {/* CTA */}
                   <a
                     href="https://t.me/a4logistics_bot"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-xl text-[14px] font-medium transition-colors mb-6 text-center block ${plan.featured ? 'bg-white text-black hover:bg-white/90 shadow-md' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'}`}
+                    className={`w-full py-3 rounded-xl text-[14px] font-semibold transition-all duration-200 text-center block
+                      ${plan.featured
+                        ? 'bg-white text-black hover:bg-white/90 shadow-lg'
+                        : 'bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:text-white'
+                      }`}
                   >
-                    Ulanish uchun yozing
+                    Ulanish
                   </a>
-                  <ul className="space-y-3">
-                    {["Cheksiz arizalar yozish", "4 tagacha akkunt qo'shish", "1,000+ guruhga tarqatish", "Anti-ban himoyasi"].map((item, j) => (
-                      <li key={j} className="flex items-center gap-3 text-[14px] text-white/80">
-                        <CheckCircle2 className="w-4 h-4 text-white/40 flex-shrink-0" />
+                </div>
+
+                {/* Features */}
+                <div className="px-6 pb-6">
+                  <ul className="grid grid-cols-1 gap-2.5">
+                    {[
+                      "Cheksiz arizalar",
+                      "4 ta akkunt",
+                      "1,000+ guruh",
+                      "Anti-ban himoya"
+                    ].map((item, j) => (
+                      <li key={j} className="flex items-center gap-2.5 text-[13px] text-white/60">
+                        <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${plan.featured ? 'text-white/60' : 'text-white/25'}`} />
                         {item}
                       </li>
                     ))}
