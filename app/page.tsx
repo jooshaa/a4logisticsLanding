@@ -246,137 +246,211 @@ export default function Home() {
 
       {/* ── PRICING ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-32 relative bg-black border-t border-white/5">
-        <div className="max-w-[520px] mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 sm:mb-12">
+        <div className="max-w-[1000px] mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-[28px] sm:text-[40px] font-medium text-white mb-3 tracking-tight">Obuna Ta'riflari</h2>
-            <p className="text-[14px] sm:text-[16px] text-[#8A8F98] leading-relaxed">
+            <p className="text-[14px] sm:text-[16px] text-[#8A8F98] max-w-[420px] mx-auto leading-relaxed">
               To'lovlar Click yoki Payme orqali qabul qilinadi.
             </p>
           </div>
 
-          {/* ── Tab switcher ── */}
-          {(() => {
-            const plans = [
-              {
-                name: "Starter",
-                subtitle: "Botni sinab ko'ring",
-                price: "$10",
-                period: "30 kun uchun",
-                cta: "Boshlash",
-                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
-                icon: (
-                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="12" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                    <path d="M24 16h4l4 6v6h-8V16z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
-                    <circle cx="9" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                    <circle cx="27" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                  </svg>
-                )
-              },
-              {
-                name: "Pro",
-                subtitle: "Eng mashhur tanlov",
-                price: "$18",
-                period: "60 kun uchun",
-                cta: "Pro ni tanlash",
-                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
-                icon: (
-                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 4L22 14H32L24 20L27 30L18 24L9 30L12 20L4 14H14L18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
-                  </svg>
-                )
-              },
-              {
-                name: "Max",
-                subtitle: "Uzoq muddatli qulaylik",
-                price: "$25",
-                period: "90 kun uchun",
-                cta: "Max ni tanlash",
-                features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
-                icon: (
-                  <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 4C18 4 8 10 8 20C8 25.5 12.5 30 18 30C23.5 30 28 25.5 28 20C28 10 18 4 18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                    <path d="M18 14V20L22 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                )
-              }
-            ];
-            const plan = plans[selectedPlan];
-            return (
-              <>
-                {/* Pill tabs */}
-                <div className="flex justify-center mb-8">
-                  <div className="inline-flex items-center gap-1 bg-white/[0.05] border border-white/[0.08] rounded-2xl p-1">
-                    {plans.map((p, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setSelectedPlan(i)}
-                        className={`px-5 py-2.5 rounded-xl text-[14px] font-medium transition-all duration-200
-                          ${selectedPlan === i
-                            ? 'bg-[#18181B] text-white shadow-sm border border-white/10'
-                            : 'text-[#8A8F98] hover:text-white border border-transparent'
-                          }`}
-                      >
-                        {p.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Single plan card */}
-                <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0A] overflow-hidden">
-                  <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 sm:pb-7">
-                    
-                    <div className="flex items-start justify-between mb-8">
-                      {/* Left: Icon, Name, Subtitle */}
-                      <div>
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="text-white">{plan.icon}</div>
-                          <h3 className="text-[28px] sm:text-[32px] font-medium tracking-tight text-white leading-none">{plan.name}</h3>
-                        </div>
-                        <p className="text-[14px] sm:text-[15px] text-[#8A8F98]">{plan.subtitle}</p>
-                      </div>
-
-                      {/* Right: Price, Period */}
-                      <div className="text-right">
-                        <div className="text-[40px] sm:text-[48px] font-semibold text-white tracking-tight leading-none mb-2">
-                          {plan.price}
-                        </div>
-                        <p className="text-[13px] sm:text-[14px] text-[#555]">{plan.period}</p>
-                      </div>
+          {/* ── Mobile: Tab switcher ── */}
+          <div className="sm:hidden max-w-[420px] mx-auto">
+            {(() => {
+              const plans = [
+                {
+                  name: "Starter",
+                  subtitle: "Botni sinab ko'ring",
+                  price: "$10",
+                  period: "30 kun uchun",
+                  cta: "Boshlash",
+                  features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                  icon: (
+                    <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="4" y="12" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                      <path d="M24 16h4l4 6v6h-8V16z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+                      <circle cx="9" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                      <circle cx="27" cy="27" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    </svg>
+                  )
+                },
+                {
+                  name: "Pro",
+                  subtitle: "Eng mashhur tanlov",
+                  price: "$18",
+                  period: "60 kun uchun",
+                  cta: "Pro ni tanlash",
+                  features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                  icon: (
+                    <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 4L22 14H32L24 20L27 30L18 24L9 30L12 20L4 14H14L18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+                    </svg>
+                  )
+                },
+                {
+                  name: "Max",
+                  subtitle: "Uzoq muddatli qulaylik",
+                  price: "$25",
+                  period: "90 kun uchun",
+                  cta: "Max ni tanlash",
+                  features: ["Cheksiz arizalar", "4 ta Telegram akkunt", "1,000+ guruh bazasi", "Anti-ban himoya"],
+                  icon: (
+                    <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 4C18 4 8 10 8 20C8 25.5 12.5 30 18 30C23.5 30 28 25.5 28 20C28 10 18 4 18 4Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                      <path d="M18 14V20L22 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  )
+                }
+              ];
+              const plan = plans[selectedPlan];
+              return (
+                <>
+                  {/* Pill tabs */}
+                  <div className="flex justify-center mb-8">
+                    <div className="inline-flex items-center gap-1 bg-white/[0.05] border border-white/[0.08] rounded-2xl p-1">
+                      {plans.map((p, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setSelectedPlan(i)}
+                          className={`px-4 py-2 rounded-xl text-[13px] font-medium transition-all duration-200
+                            ${selectedPlan === i
+                              ? 'bg-[#18181B] text-white shadow-sm border border-white/10'
+                              : 'text-[#8A8F98] hover:text-white border border-transparent'
+                            }`}
+                        >
+                          {p.name}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Divider */}
-                  <div className="h-px bg-white/[0.06]" />
+                  {/* Single plan card */}
+                  <div className="rounded-3xl border border-white/[0.08] bg-[#0A0A0A] overflow-hidden">
+                    <div className="px-6 pt-6 pb-6">
+                      
+                      <div className="flex items-start justify-between mb-8">
+                        {/* Left: Icon, Name, Subtitle */}
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="text-white">{plan.icon}</div>
+                            <h3 className="text-[28px] font-medium tracking-tight text-white leading-none">{plan.name}</h3>
+                          </div>
+                          <p className="text-[14px] text-[#8A8F98]">{plan.subtitle}</p>
+                        </div>
 
-                  {/* Features & CTA */}
-                  <div className="px-6 sm:px-8 py-6 sm:py-8 flex flex-col h-full">
-                    <ul className="space-y-4 mb-8 flex-grow">
-                      {plan.features.map((item, j) => (
-                        <li key={j} className="flex items-center gap-3 text-[14px] text-white/70">
-                          <svg className="w-4 h-4 flex-shrink-0 text-white/50" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                        {/* Right: Price, Period */}
+                        <div className="text-right">
+                          <div className="text-[40px] font-semibold text-white tracking-tight leading-none mb-2">
+                            {plan.price}
+                          </div>
+                          <p className="text-[13px] text-[#555]">{plan.period}</p>
+                        </div>
+                      </div>
+                    </div>
 
-                    {/* CTA */}
-                    <a
-                      href="https://t.me/a4logistics_bot"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full mt-auto py-3.5 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors text-center block shadow-lg"
-                    >
-                      {plan.cta}
-                    </a>
+                    {/* Divider */}
+                    <div className="h-px bg-white/[0.06]" />
+
+                    {/* Features & CTA */}
+                    <div className="px-6 py-6 flex flex-col h-full">
+                      <ul className="space-y-4 mb-8 flex-grow">
+                        {plan.features.map((item, j) => (
+                          <li key={j} className="flex items-center gap-3 text-[14px] text-white/70">
+                            <svg className="w-4 h-4 flex-shrink-0 text-white/50" viewBox="0 0 16 16" fill="none">
+                              <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* CTA */}
+                      <a
+                        href="https://t.me/a4logistics_bot"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full mt-auto py-3.5 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors text-center block shadow-lg"
+                      >
+                        {plan.cta}
+                      </a>
+                    </div>
                   </div>
+                </>
+              );
+            })()}
+          </div>
+
+          {/* ── Desktop: Original 3-column layout ── */}
+          <div className="hidden sm:flex flex-row items-stretch justify-center gap-0">
+            {[
+              { days: "30 kunlik", desc: "Boshlang'ich", price: "$10", sub: "oyiga", featured: false },
+              { days: "60 kunlik", desc: "Eng mashhur",  price: "$18", sub: "oyiga", featured: true  },
+              { days: "90 kunlik", desc: "Tejamkor",     price: "$25", sub: "oyiga", featured: false }
+            ].map((plan, i) => (
+              <div
+                key={i}
+                className={`relative flex flex-col w-1/3 rounded-2xl border transition-all duration-300
+                  ${plan.featured
+                    ? 'border-white/25 bg-[#141414] -mx-1 shadow-2xl shadow-black/60 z-10'
+                    : 'border-white/[0.08] bg-[#0A0A0A] hover:border-white/15'
+                  }`}
+              >
+                {/* Card top */}
+                <div className={`px-6 pt-6 pb-5 ${plan.featured ? 'pt-8' : ''}`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[13px] font-medium text-[#8A8F98]">{plan.days}</span>
+                    {plan.featured && (
+                      <span className="inline-flex items-center gap-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+                        {plan.desc}
+                      </span>
+                    )}
+                    {!plan.featured && (
+                      <span className="text-[12px] text-[#555]">{plan.desc}</span>
+                    )}
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex items-end gap-2 mb-1">
+                    <span className={`font-semibold tracking-tight text-white leading-none ${plan.featured ? 'text-[64px]' : 'text-[48px]'}`}>
+                      {plan.price}
+                    </span>
+                    <span className="text-[13px] text-[#555] mb-2">{plan.sub}</span>
+                  </div>
+                  <div className="h-px bg-white/[0.06] mb-5" />
+
+                  {/* Features */}
+                  <ul className="grid grid-cols-1 gap-3 mb-6">
+                    {[
+                      "Cheksiz arizalar",
+                      "4 ta akkunt",
+                      "1,000+ guruh",
+                      "Anti-ban himoya"
+                    ].map((item, j) => (
+                      <li key={j} className="flex items-center gap-2.5 text-[13px] text-white/60">
+                        <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${plan.featured ? 'text-white/60' : 'text-white/25'}`} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <a
+                    href="https://t.me/a4logistics_bot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full py-3 rounded-xl text-[14px] font-semibold transition-all duration-200 text-center block mt-auto
+                      ${plan.featured
+                        ? 'bg-white text-black hover:bg-white/90 shadow-lg'
+                        : 'bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:text-white'
+                      }`}
+                  >
+                    Ulanish
+                  </a>
                 </div>
-              </>
-            );
-          })()}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
